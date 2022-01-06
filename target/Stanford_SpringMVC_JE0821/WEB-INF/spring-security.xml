@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans
+        xmlns="http://www.springframework.org/schema/security"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:beans="http://www.springframework.org/schema/beans"
+        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd">
+    <http auto-config="true">
+        <intercept-url pattern="/admin/*"
+                       access="hasRole('ROLE_ADMIN')" />
+        <intercept-url pattern="/user**" access="hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')" />
+        <csrf disabled="true" />
+        <access-denied-handler error-page="/403"/>
+        <form-login login-page="/dang-nhap"
+                    login-processing-url="thucHienDangNhap" default-target-url="/admin/QuanLy"
+                    authentication-failure-url="/dang-nhap1?error"
+                    username-parameter="username" password-parameter="password" />
+        <logout logout-url="/dangXuat1" logout-success-url="/dangXuat1"
+                delete-cookies="JSESSIONID" />
+    </http>
+    <authentication-manager>
+        <authentication-provider>
+            <user-service>
+                <user name="admin" password="123456"
+                      authorities="ROLE_ADMIN" />
+                <user name="sena" password="123456" authorities="ROLE_USER" />
+            </user-service>
+        </authentication-provider>
+    </authentication-manager>
+</beans:beans>

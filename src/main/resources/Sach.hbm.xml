@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+ <hibernate-mapping package="vn.com.stanford.je0821.springmvcbasic.entity">
+ <class name="Sach" table="Sach">
+  <id name="maSach" type="string">
+   <column name="MaSach"/>
+  </id>
+  <property name="tenSach" column="TenSach" type="string" length="150"/>
+  <property name="moTa" column="MoTa" type="string" length="500"/>
+  <property name="anhSach" column="AnhSach" type="string" length="100"/>
+  <property name="tacGia" column="TacGia" type="string" length="30"/>
+  <property name="giaSach" column="GiaSach" type="double"/>
+  <property name="ngayTao" column="NgayTao" type="date"/>
+  <property name="ngayDuyet" column="NgayDuyet" type="date"/>
+  <property name="daDuyet" column="DaDuyet" type="boolean"/>
+  <property name="maChuDe" column="MaChuDe" type="string" length="10"/>
+ </class>
+</hibernate-mapping>
